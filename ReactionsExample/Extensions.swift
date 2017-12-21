@@ -1,8 +1,9 @@
 //
 //  Extensions.swift
-//  FloatingViewExample
+//  ReactionsExample
 //
 //  Created by Said Marouf on 9/23/15.
+//  Modified by Nathan Borror on 12/21/17
 //  Copyright © 2015 Said Marouf. All rights reserved.
 //
 

@@ -1,24 +1,17 @@
 //
-//  FloatingView.swift
-//  FloatingView
+//  ReactionView.swift
+//  Reactions
 //
 //  Created by Said Marouf on 9/22/15.
+//  Modified by Nathan Borror on 12/21/17
 //  Copyright © 2015 Said Marouf. All rights reserved.
 //
 
 import UIKit
 
-public protocol Floater {
-    var fill: UIColor { get }
-    var stroke: UIColor { get }
-    var size: CGSize { get }
-    var image: UIImage? { get }
-    var imageBorder: UIImage? { get }
-}
+public class ReactionView: UIView {
 
-public class FloatingView: UIView {
-
-    enum Rotation: CGFloat {
+    private enum Rotation: CGFloat {
         case left = -1
         case right = 1
     }
@@ -28,20 +21,18 @@ public class FloatingView: UIView {
         static let bloom: TimeInterval = 0.5
     }
 
-    private let floater: Floater
-
-    public init(floater: Floater) {
-        self.floater = floater
-        super.init(frame: CGRect(origin: .zero, size: self.floater.size))
+    public init(for view: UIView) {
+        super.init(frame: CGRect(origin: .zero, size: view.bounds.size))
         backgroundColor = UIColor.clear
         layer.anchorPoint = CGPoint(x: 0.5, y: 1)
+        addSubview(view)
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func animateInView(view: UIView) {
+    public func animate(in view: UIView) {
         guard let rotationDirection = Rotation(rawValue: CGFloat(1 - Int(2 * rand(2)))) else { return }
         prepareForAnimation()
         performBloomAnimation()
@@ -112,17 +103,6 @@ public class FloatingView: UIView {
         }, completion: { finished in
             self.removeFromSuperview()
         })
-    }
-
-    public override func draw(_ rect: CGRect) {
-
-        // Draw background image (mimics border)
-        floater.stroke.setFill()
-        floater.imageBorder?.draw(in: rect, blendMode: .normal, alpha: 1.0)
-
-        // Draw foreground image
-        floater.fill.setFill()
-        floater.image?.draw(in: rect, blendMode: .normal, alpha: 1.0)
     }
 }
 

@@ -1,4 +1,4 @@
-# FloatingView
+# Reactions
 
 Periscope-Like floating hearts animation.
 
@@ -6,7 +6,7 @@ Example showing how to recreate the floating hearts animation on Periscope.
 
 # Demo
 
-![Demo](https://github.com/nathanborror/FloatingView/blob/master/hearts.gif)
+![Demo](https://github.com/nathanborror/Reactions/blob/master/hearts.gif)
 
 # Info
 
