@@ -1,6 +1,6 @@
 //
 //  FloatingView.swift
-//  FloatingHeart
+//  FloatingView
 //
 //  Created by Said Marouf on 9/22/15.
 //  Copyright © 2015 Said Marouf. All rights reserved.
@@ -71,21 +71,21 @@ public class FloatingView: UIView {
     private func travelPath(inView view: UIView) -> UIBezierPath? {
         guard let endPointDirection = Rotation(rawValue: CGFloat(1 - (2 * rand(2)))) else { return nil }
 
-        let heartCenterX = center.x
-        let heartSize = bounds.width
+        let centerX = center.x
+        let width = bounds.width
         let viewHeight = view.bounds.height
 
         // Random end point
-        let endPointX = heartCenterX + (endPointDirection.rawValue * rand(2 * heartSize))
+        let endPointX = centerX + (endPointDirection.rawValue * rand(2 * width))
         let endPointY = viewHeight / 8.0 + rand(viewHeight / 4.0)
         let endPoint = CGPoint(x: endPointX, y: endPointY)
 
         // Random Control Points
         let travelDirection = CGFloat(1 - (2 * rand(2)))
-        let xDelta = (heartSize / 2.0 + rand(2 * heartSize)) * travelDirection
-        let yDelta = max(endPoint.y ,max(rand(8 * heartSize), heartSize))
-        let controlPoint1 = CGPoint(x: heartCenterX + xDelta, y: viewHeight - yDelta)
-        let controlPoint2 = CGPoint(x: heartCenterX - 2 * xDelta, y: yDelta)
+        let xDelta = (width / 2.0 + rand(2 * width)) * travelDirection
+        let yDelta = max(endPoint.y ,max(rand(8 * width), width))
+        let controlPoint1 = CGPoint(x: centerX + xDelta, y: viewHeight - yDelta)
+        let controlPoint2 = CGPoint(x: centerX - 2 * xDelta, y: yDelta)
 
         let path = UIBezierPath()
         path.move(to: center)
@@ -94,11 +94,11 @@ public class FloatingView: UIView {
     }
 
     private func addPathAnimation(inView view: UIView) {
-        guard let heartTravelPath = travelPath(inView: view) else { return }
+        guard let travelPath = travelPath(inView: view) else { return }
         let keyFrameAnimation = CAKeyframeAnimation(keyPath: "position")
-        keyFrameAnimation.path = heartTravelPath.cgPath
+        keyFrameAnimation.path = travelPath.cgPath
         keyFrameAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        let durationAdjustment = 4 * TimeInterval(heartTravelPath.bounds.height / view.bounds.height)
+        let durationAdjustment = 4 * TimeInterval(travelPath.bounds.height / view.bounds.height)
         let duration = Durations.full + durationAdjustment
         keyFrameAnimation.duration = duration
         layer.add(keyFrameAnimation, forKey: "positionOnPath")
@@ -120,7 +120,7 @@ public class FloatingView: UIView {
         floater.stroke.setFill()
         floater.imageBorder?.draw(in: rect, blendMode: .normal, alpha: 1.0)
 
-        // Draw foreground heart image
+        // Draw foreground image
         floater.fill.setFill()
         floater.image?.draw(in: rect, blendMode: .normal, alpha: 1.0)
     }

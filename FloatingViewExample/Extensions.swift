@@ -1,6 +1,6 @@
 //
 //  Extensions.swift
-//  FloatingHeart
+//  FloatingViewExample
 //
 //  Created by Said Marouf on 9/23/15.
 //  Copyright © 2015 Said Marouf. All rights reserved.

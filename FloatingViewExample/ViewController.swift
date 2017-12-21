@@ -43,8 +43,8 @@ class ViewController: UIViewController {
         let heartView = FloatingView(floater: heart)
         view.addSubview(heartView)
 
-        let fountainX = heartView.bounds.size.width / 2.0 + 20
-        let fountainY = view.bounds.height - heartView.bounds.size.height / 2.0 - 10
+        let fountainX = (heartView.bounds.width / 2) + 20
+        let fountainY = view.bounds.height - (heartView.bounds.size.height / 2)
         heartView.center = CGPoint(x: fountainX, y: fountainY)
 
         heartView.animateInView(view: view)
