@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1A867751CC82E5C001BBB2D /* FloatingHearts.h in Headers */ = {isa = PBXBuildFile; fileRef = A1A867741CC82E5C001BBB2D /* FloatingHearts.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A1A867831CC82E83001BBB2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A867821CC82E83001BBB2D /* AppDelegate.swift */; };
 		A1A867851CC82E83001BBB2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A867841CC82E83001BBB2D /* ViewController.swift */; };
-		A1A867881CC82E83001BBB2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1A867861CC82E83001BBB2D /* Main.storyboard */; };
 		A1A8678A1CC82E83001BBB2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A867891CC82E83001BBB2D /* Assets.xcassets */; };
 		A1A8678D1CC82E83001BBB2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1A8678B1CC82E83001BBB2D /* LaunchScreen.storyboard */; };
-		A1A867961CC82F54001BBB2D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A867951CC82F54001BBB2D /* Helpers.swift */; };
+		A1A867961CC82F54001BBB2D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A867951CC82F54001BBB2D /* Extensions.swift */; };
 		A1A867971CC82FA7001BBB2D /* FloatingHearts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A867711CC82E5C001BBB2D /* FloatingHearts.framework */; };
 		A1A867981CC83097001BBB2D /* HeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A867921CC82EBA001BBB2D /* HeartView.swift */; };
 		A1A8679A1CC831A2001BBB2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A867991CC831A2001BBB2D /* Assets.xcassets */; };
@@ -21,17 +19,15 @@
 
 /* Begin PBXFileReference section */
 		A1A867711CC82E5C001BBB2D /* FloatingHearts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FloatingHearts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1A867741CC82E5C001BBB2D /* FloatingHearts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FloatingHearts.h; sourceTree = "<group>"; };
 		A1A867761CC82E5C001BBB2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1A867801CC82E83001BBB2D /* FloatingHeartsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FloatingHeartsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A867821CC82E83001BBB2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1A867841CC82E83001BBB2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A1A867871CC82E83001BBB2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1A867891CC82E83001BBB2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1A8678C1CC82E83001BBB2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1A8678E1CC82E83001BBB2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1A867921CC82EBA001BBB2D /* HeartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartView.swift; sourceTree = "<group>"; };
-		A1A867951CC82F54001BBB2D /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		A1A867951CC82F54001BBB2D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A1A867991CC831A2001BBB2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,11 +71,9 @@
 		A1A867731CC82E5C001BBB2D /* FloatingHearts */ = {
 			isa = PBXGroup;
 			children = (
-				A1A867951CC82F54001BBB2D /* Helpers.swift */,
-				A1A867941CC82ECD001BBB2D /* Views */,
-				A1A867991CC831A2001BBB2D /* Assets.xcassets */,
-				A1A867741CC82E5C001BBB2D /* FloatingHearts.h */,
-				A1A867761CC82E5C001BBB2D /* Info.plist */,
+				A1A867921CC82EBA001BBB2D /* HeartView.swift */,
+				A1A867951CC82F54001BBB2D /* Extensions.swift */,
+				F5FA1BB31FEC462000B8C14E /* Resources */,
 			);
 			path = FloatingHearts;
 			sourceTree = "<group>";
@@ -89,20 +83,28 @@
 			children = (
 				A1A867821CC82E83001BBB2D /* AppDelegate.swift */,
 				A1A867841CC82E83001BBB2D /* ViewController.swift */,
-				A1A867861CC82E83001BBB2D /* Main.storyboard */,
-				A1A867891CC82E83001BBB2D /* Assets.xcassets */,
-				A1A8678B1CC82E83001BBB2D /* LaunchScreen.storyboard */,
-				A1A8678E1CC82E83001BBB2D /* Info.plist */,
+				F5FA1BB21FEC45C500B8C14E /* Resources */,
 			);
 			path = FloatingHeartsExample;
 			sourceTree = "<group>";
 		};
-		A1A867941CC82ECD001BBB2D /* Views */ = {
+		F5FA1BB21FEC45C500B8C14E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A1A867921CC82EBA001BBB2D /* HeartView.swift */,
+				A1A867891CC82E83001BBB2D /* Assets.xcassets */,
+				A1A8678B1CC82E83001BBB2D /* LaunchScreen.storyboard */,
+				A1A8678E1CC82E83001BBB2D /* Info.plist */,
 			);
-			name = Views;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F5FA1BB31FEC462000B8C14E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1A867991CC831A2001BBB2D /* Assets.xcassets */,
+				A1A867761CC82E5C001BBB2D /* Info.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,7 +114,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1A867751CC82E5C001BBB2D /* FloatingHearts.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +207,6 @@
 			files = (
 				A1A8678D1CC82E83001BBB2D /* LaunchScreen.storyboard in Resources */,
 				A1A8678A1CC82E83001BBB2D /* Assets.xcassets in Resources */,
-				A1A867881CC82E83001BBB2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1A867961CC82F54001BBB2D /* Helpers.swift in Sources */,
+				A1A867961CC82F54001BBB2D /* Extensions.swift in Sources */,
 				A1A867981CC83097001BBB2D /* HeartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,14 +234,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A1A867861CC82E83001BBB2D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A1A867871CC82E83001BBB2D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A1A8678B1CC82E83001BBB2D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -359,6 +351,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -376,6 +369,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.saidmarouf.FloatingHearts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -387,6 +381,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.saidmarouf.FloatingHeartsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -398,6 +393,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.saidmarouf.FloatingHeartsExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -420,6 +416,7 @@
 				A1A8677B1CC82E5C001BBB2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A1A8678F1CC82E83001BBB2D /* Build configuration list for PBXNativeTarget "FloatingHeartsExample" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +425,7 @@
 				A1A867911CC82E83001BBB2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

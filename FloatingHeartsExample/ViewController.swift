@@ -12,11 +12,11 @@ import FloatingHearts
 class ViewController: UIViewController {
 
     private struct HeartAttributes {
-        static let heartSize: CGFloat = 36
-        static let burstDelay: NSTimeInterval = 0.1
+        static let size = CGSize(width: 36, height: 36)
+        static let burstDelay: TimeInterval = 0.1
     }
 
-    var burstTimer: NSTimer?
+    private var burstTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,24 +31,23 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(longPressGesture)
     }
 
-    func didLongPress(longPressGesture: UILongPressGestureRecognizer) {
-        switch longPressGesture.state {
-        case .Began:
-            burstTimer = NSTimer.scheduledTimerWithTimeInterval(HeartAttributes.burstDelay, target: self, selector: #selector(showTheLove), userInfo: nil, repeats: true)
-        case .Ended, .Cancelled:
+    @objc func didLongPress(recognizer: UILongPressGestureRecognizer) {
+        switch recognizer.state {
+        case .began:
+            burstTimer = Timer.scheduledTimer(timeInterval: HeartAttributes.burstDelay, target: self, selector: #selector(showTheLove), userInfo: nil, repeats: true)
+        case .ended, .cancelled:
             burstTimer?.invalidate()
         default:
             break
         }
     }
 
-    func showTheLove(gesture: UITapGestureRecognizer?) {
-        let heart = HeartView(frame: CGRectMake(0, 0, HeartAttributes.heartSize, HeartAttributes.heartSize))
+    @objc func showTheLove() {
+        let heart = HeartView(frame: CGRect(origin: .zero, size: HeartAttributes.size))
         view.addSubview(heart)
-        let fountainX = HeartAttributes.heartSize / 2.0 + 20
-        let fountainY = view.bounds.height - HeartAttributes.heartSize / 2.0 - 10
+        let fountainX = HeartAttributes.size.width / 2.0 + 20
+        let fountainY = view.bounds.height - HeartAttributes.size.height / 2.0 - 10
         heart.center = CGPoint(x: fountainX, y: fountainY)
-        heart.animateInView(view)
+        heart.animateInView(view: view)
     }
-    
 }
