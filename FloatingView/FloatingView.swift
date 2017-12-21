@@ -1,5 +1,5 @@
 //
-//  HeartView.swift
+//  FloatingView.swift
 //  FloatingHeart
 //
 //  Created by Said Marouf on 9/22/15.
@@ -7,34 +7,18 @@
 //
 
 import UIKit
-import Foundation
 
-struct HeartTheme {
-    let fill: UIColor
-    let stroke: UIColor
-
-    // Using white borders for this example. Set your colors.
-    static let availableThemes = [
-        (UIColor(hex: 0xe66f5e), UIColor(white: 1.0, alpha: 0.8)),
-        (UIColor(hex: 0x6a69a0), UIColor(white: 1.0, alpha: 0.8)),
-        (UIColor(hex: 0x81cc88), UIColor(white: 1.0, alpha: 0.8)),
-        (UIColor(hex: 0xfd3870), UIColor(white: 1.0, alpha: 0.8)),
-        (UIColor(hex: 0x6ecff6), UIColor(white: 1.0, alpha: 0.8)),
-        (UIColor(hex: 0xc0aaf7), UIColor(white: 1.0, alpha: 0.8)),
-        (UIColor(hex: 0xf7603b), UIColor(white: 1.0, alpha: 0.8)),
-        (UIColor(hex: 0x39d3d3), UIColor(white: 1.0, alpha: 0.8)),
-        (UIColor(hex: 0xfed301), UIColor(white: 1.0, alpha: 0.8))
-    ]
-
-    static func randomTheme() -> HeartTheme {
-        let theme = availableThemes[rand(availableThemes.count)]
-        return HeartTheme(fill: theme.0, stroke: theme.1)
-    }
+public protocol Floater {
+    var fill: UIColor { get }
+    var stroke: UIColor { get }
+    var size: CGSize { get }
+    var image: UIImage? { get }
+    var imageBorder: UIImage? { get }
 }
 
-public class HeartView: UIView {
+public class FloatingView: UIView {
 
-    enum RotationDirection: CGFloat {
+    enum Rotation: CGFloat {
         case left = -1
         case right = 1
     }
@@ -44,18 +28,21 @@ public class HeartView: UIView {
         static let bloom: TimeInterval = 0.5
     }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    private let floater: Floater
+
+    public init(floater: Floater) {
+        self.floater = floater
+        super.init(frame: CGRect(origin: .zero, size: self.floater.size))
         backgroundColor = UIColor.clear
         layer.anchorPoint = CGPoint(x: 0.5, y: 1)
     }
 
     required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 
     public func animateInView(view: UIView) {
-        guard let rotationDirection = RotationDirection(rawValue: CGFloat(1 - Int(2 * rand(2)))) else { return }
+        guard let rotationDirection = Rotation(rawValue: CGFloat(1 - Int(2 * rand(2)))) else { return }
         prepareForAnimation()
         performBloomAnimation()
         performSlightRotationAnimation(direction: rotationDirection)
@@ -74,7 +61,7 @@ public class HeartView: UIView {
         }, completion: nil)
     }
 
-    private func performSlightRotationAnimation(direction: RotationDirection) {
+    private func performSlightRotationAnimation(direction: Rotation) {
         let rotationFraction = CGFloat(rand(10))
         UIView.animate(withDuration: Durations.full) {
             self.transform = CGAffineTransform(rotationAngle: direction.rawValue * .pi / (16 + rotationFraction * 0.2))
@@ -82,7 +69,7 @@ public class HeartView: UIView {
     }
 
     private func travelPath(inView view: UIView) -> UIBezierPath? {
-        guard let endPointDirection = RotationDirection(rawValue: CGFloat(1 - (2 * rand(2)))) else { return nil }
+        guard let endPointDirection = Rotation(rawValue: CGFloat(1 - (2 * rand(2)))) else { return nil }
 
         let heartCenterX = center.x
         let heartSize = bounds.width
@@ -128,18 +115,14 @@ public class HeartView: UIView {
     }
 
     public override func draw(_ rect: CGRect) {
-        let theme = HeartTheme.randomTheme()
-        let imageBundle = Bundle(for: HeartView.self)
-        let heartImage = UIImage(named: "heart", in: imageBundle, compatibleWith: nil)
-        let heartImageBorder = UIImage(named: "heartBorder", in: imageBundle, compatibleWith: nil)
-    
+
         // Draw background image (mimics border)
-        theme.stroke.setFill()
-        heartImageBorder?.draw(in: rect, blendMode: .normal, alpha: 1.0)
+        floater.stroke.setFill()
+        floater.imageBorder?.draw(in: rect, blendMode: .normal, alpha: 1.0)
 
         // Draw foreground heart image
-        theme.fill.setFill()
-        heartImage?.draw(in: rect, blendMode: .normal, alpha: 1.0)
+        floater.fill.setFill()
+        floater.image?.draw(in: rect, blendMode: .normal, alpha: 1.0)
     }
 }
 

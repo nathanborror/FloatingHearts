@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  FloatingHeartsExample
+//  FloatingViewExample
 //
 //  Created by Said Marouf on 4/20/16.
 //  Copyright © 2016 Said Marouf. All rights reserved.

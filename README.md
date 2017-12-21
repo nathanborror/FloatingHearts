@@ -1,16 +1,20 @@
-# FloatingHearts
+# FloatingView
+
 Periscope-Like floating hearts animation.
 
 Example showing how to recreate the floating hearts animation on Periscope.
 
 # Demo
-![Demo](https://github.com/saidmarouf/FloatingHearts/blob/master/hearts.gif)
+
+![Demo](https://github.com/nathanborror/FloatingView/blob/master/hearts.gif)
 
 # Info
+
 Requires Xcode 7<br />
 This is an example and not yet provided as an installable Pod. Mostly implemented as a fun exercise.<br />
 
 # To-Do
+
 Refactor for better customizabilty.
 Provide as a reusable Pod
 
